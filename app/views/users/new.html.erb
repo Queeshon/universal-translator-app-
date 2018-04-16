@@ -1,0 +1,18 @@
+<h1>Create New User:</h1>
+
+<%= form_for @user do |f| %>
+  Name: <%= f.text_field :name %><br>
+  Username: <%= f.text_field :username %><br>
+  Password: <%= f.text_field :password %><br>
+  Password Confirmation <%= f.text_field :password_confirmation %><br>
+
+  <%= f.submit %>
+<% end %>
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
