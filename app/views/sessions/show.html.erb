@@ -2,12 +2,16 @@
 
 <p><%= link_to 'Start New Conversation', new_conversation_path %></p>
 
-<ul>
-  <% @user.conversations.each do |convo| %>
-    <% convo.users.each do |user| %>
-      <% if user.name != @user.name %>
-        <li><%= link_to user.name, convo %></li>
+<% if @user.conversations == nil %>
+  <h3>No new conversations.</h3>
+<% else %>
+  <ul>
+    <% @user.conversations.each do |convo| %>
+      <% convo.users.each do |user| %>
+        <% if user.name != @user.name %>
+          <li><%= link_to user.name, convo %></li>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+<% end %>

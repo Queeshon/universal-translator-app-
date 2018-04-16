@@ -11,17 +11,18 @@ class SessionsController < ApplicationController
   end
 
   def show
+    #byebug
   end
 
   def destroy
     session.delete :username
-    redirect_to root_path
+    redirect_to login_path
   end
 
   private
 
   def get_user
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(username: session[:username])
   end
 
 end

@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-user = User.create(name: "Justin", password: "password")
-user1 = User.create(name: "Jeremy", password: "password")
-user2 = User.create(name: "Christian", password: "password")
+justin = User.create(name: "Justin", username: "jdumadag", password: "password")
+remy = User.create(name: "Jeremy", username: "jerbear", password: "password")
+christian = User.create(name: "Christian", username: "queeshon", password: "password")
 
-message = Message.create(message: "Hi")
+convo1= Conversation.create()

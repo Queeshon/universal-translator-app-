@@ -1,14 +1,10 @@
 class ConversationsController < ApplicationController
 
-  def index
-    @conversations = Conversation.all
-  end
-
   def new
     @conversation = Conversation.new
     @users = User.all
+    @user = User.find_by(username: session[:username])
   end
-
 
   def show
     @conversation = Conversation.find(params[:id])
@@ -16,13 +12,13 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.create(conversation_params)
-    # if @conversation.valid?
+    if @conversation.valid?
       redirect_to conversation_path(@conversation)
-  #   else
-  #     flash[:errors] = @conversation.errors.full_messages
-  #     redirect_to new_conversation_path
-  # end
-end
+    else
+      flash[:errors] = @conversation.errors.full_messages
+      redirect_to new_conversation_path
+    end
+  end
 
 
 private

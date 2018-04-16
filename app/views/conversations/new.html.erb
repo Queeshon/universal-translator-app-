@@ -1,11 +1,11 @@
-<h3>New Conversations</h3>
+<h3>New Conversation</h3>
 
 <%= form_for @conversation do |f| %>
-  <%= f.hidden_field :initiator_id %>
-  <%= f.collection_select :receiver_id, @users, :id, :name %>
-  <%= f.label :messages %>
-  <%= f.fields_for :messages, @conversation.messages.build do |message| %>
-    <%= message.text_field :content %>
+  <%= f.hidden_field :initiator_id, value: @user.id %>
+  <%= f.collection_select :receiver_id, @users, :id, :username %><br><br>
+  <%= f.label :message %>
+  <%= f.fields_for :messages, @conversation.messages.build do |message| %><br>
+    <%= message.text_area :content %><br><br>
     <% end %>
-  <%= f.submit "SEND" %>
+  <%= f.submit "Send" %>
 <% end %>
