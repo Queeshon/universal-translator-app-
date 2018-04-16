@@ -1,5 +1,9 @@
+<h1>Trek</h1>
+
 <%= form_tag controller: 'sessions', action: 'create', method: 'post' do %>
   Username: <%= text_field_tag 'username' %><br>
-  Password: <%= text_field_tag 'password' %><br>
-  <%= submit_tag 'login' %>
+  Password: <%= text_field_tag 'password' %><br><br>
+  <%= submit_tag 'Login' %>
 <% end %>
+
+<button><%= link_to 'Create New Account', new_user_path %></button>

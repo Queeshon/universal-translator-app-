@@ -1,4 +1,7 @@
 <h1>Welcome to Trek, <%= session[:username] %>.</h1>
+
+<p><%= link_to 'Start New Conversation', new_conversation_path %></p>
+
 <ul>
   <% @user.conversations.each do |convo| %>
     <% convo.users.each do |user| %>

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   #this controller is for the creation of new users.
+  before_action :get_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    
   end
 
   def show
@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     # else
     #   @user = User.find_by(username: params[:username])
     # end
-    @user = User.find(params[:id])
   end
 
   def new
@@ -30,6 +29,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @user.update(user_params)
+
+    if @user.valid?
+      redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to edit_user_path
+    end
+  end
+
+  def destroy
+    @user.destroy
+
+    redirect_to login_path
+  end
+
   private
 
   def user_params
@@ -40,6 +59,10 @@ class UsersController < ApplicationController
       :password_confirmation,
       conversation_ids: []
     )
+  end
+
+  def get_user
+    @user = User.find(params[:id])
   end
 
 end
