@@ -13,6 +13,11 @@
 ActiveRecord::Schema.define(version: 20180416151030) do
 
   create_table "conversations", force: :cascade do |t|
+<<<<<<< HEAD
+=======
+    t.integer "initiator_id"
+    t.integer "receiver_id"
+>>>>>>> c247b0ad28ffa1ef5717843ce9a7360718e73504
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,7 +34,10 @@ ActiveRecord::Schema.define(version: 20180416151030) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+<<<<<<< HEAD
     t.string "username"
+=======
+>>>>>>> c247b0ad28ffa1ef5717843ce9a7360718e73504
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

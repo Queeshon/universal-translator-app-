@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/welcome', to: 'sessions#show'
   post '/logout', to: 'session#destroy'
 
+  resources :conversations
+
 
 end
