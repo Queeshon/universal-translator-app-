@@ -4,3 +4,15 @@
   <%= message.sender.username %> to <%= message.recipient.username %> at <%= message.created_at.strftime("%I:%M %p") %><br>
   <%= message.content %><br><br><br>
 <% end %>
+
+<%= form_for @conversation do |f| %>
+  <%= f.label :message %>
+  <%= f.fields_for :messages, @conversation.messages.build do |message| %><br>
+    <%= message.hidden_field :recipient_id, value: @recipient.id %><br>
+    <%= message.text_area :content %><br><br>
+    <%= message.hidden_field :sender_id, value: @user.id %>
+  <% end %>
+  <%= f.submit "Send" %>
+<% end %>
+
+<p><%= link_to 'Your Conversations', welcome_path %></p>

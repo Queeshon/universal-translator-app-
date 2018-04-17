@@ -7,7 +7,12 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @user = User.find_by(username: session[:username])
     @conversation = Conversation.find(params[:id])
+    other_user = @conversation.users.select { |key, user| user.id != @user.id }
+    #byebug
+    @recipient = other_user.values.first
+    #byebug
   end
 
   def create
@@ -22,6 +27,16 @@ class ConversationsController < ApplicationController
     else
       flash[:errors] = @conversation.errors.full_messages
       redirect_to new_conversation_path
+    end
+  end
+
+  def update
+    @conversation = Conversation.find(params[:id])
+    @conversation.update(conversation_params)
+    if @conversation.valid?
+      redirect_to @conversation
+    else
+      redirect_to @conversation
     end
   end
 
