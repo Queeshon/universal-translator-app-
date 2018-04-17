@@ -4,3 +4,10 @@
   <%= message.sender.username %> to <%= message.recipient.username %> at <%= message.created_at.strftime("%I:%M %p") %><br>
   <%= message.content %><br><br><br>
 <% end %>
+
+<script>
+  createMessageChannel();
+  // app/assets/javascripts/channels/messages.js
+  messageForm();
+  // app/assets/javascripts/messages_form.js
+</script>
