@@ -1,5 +1,6 @@
 <h1>Conversation</h1>
 
 <% @conversation.messages.each do |message| %>
-  <%= message.user.username %> : <%= message.content %>
+  <%= message.sender.username %> to <%= message.recipient.username %> at <%= message.created_at.strftime("%I:%M %p") %><br>
+  <%= message.content %><br><br><br>
 <% end %>

@@ -1,7 +1,8 @@
 class CreateMessages < ActiveRecord::Migration[5.1]
   def change
     create_table :messages do |t|
-      t.belongs_to :user, foreign_key: true
+      t.integer :sender_id, foreign_key: true
+      t.integer :recipient_id, foreign_key: true
       t.belongs_to :conversation, foreign_key: true
       t.string :content
 

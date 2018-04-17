@@ -3,12 +3,11 @@
 <%= render '/errors/errors' %>
 
 <%= form_for @conversation do |f| %>
-  <%= f.hidden_field :user_ids, value: @user.id %>
-  <%= f.collection_select :user_ids, @users, :id, :username %><br><br>
   <%= f.label :message %>
   <%= f.fields_for :messages, @conversation.messages.build do |message| %><br>
+    <%= message.collection_select :recipient_id, @users, :id, :username %><br>
     <%= message.text_area :content %><br><br>
-    <%= message.hidden_field :user_ids, value: @user.id %>
+    <%= message.hidden_field :sender_id, value: @user.id %>
   <% end %>
   <%= f.submit "Send" %>
 <% end %>
