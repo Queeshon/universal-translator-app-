@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: session[:username])
+    #byebug
+    @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:username] = @user.username
       redirect_to welcome_path
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 
   def show
     @user = User.find_by(username: session[:username])
-    byebug
+    #byebug
   end
 
   def destroy
