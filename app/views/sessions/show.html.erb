@@ -8,8 +8,8 @@
   <ul>
     <% @user.conversations.each do |convo| %>
       <% convo.users.each do |user| %>
-        <% if user.name != @user.name %>
-          <li><%= link_to user.name, convo %></li>
+        <% if user.username != @user.username %>
+          <li><%= link_to user.username, convo %></li>
         <% end %>
       <% end %>
     <% end %>

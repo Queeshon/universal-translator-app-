@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_many :messages
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+  has_many :received_messages, class_name: "Message", foreign_key: "recipient_id"
   has_many :conversations, through: :messages
   validates_presence_of :name, :username, :password
-  #validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
   validates :username, uniqueness: true, length: { in: 6..20 }
   validates :password, length: { in: 6..20 }
   has_secure_password

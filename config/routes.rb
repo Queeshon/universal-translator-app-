@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :users
 
   get '/login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
+  post 'login', to: 'sessions#create', as: 'sessions'
   get '/welcome', to: 'sessions#show'
-  post '/logout', to: 'session#destroy'
+  get '/logout', to: 'sessions#destroy'
 
   resources :conversations
 

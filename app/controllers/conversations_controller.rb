@@ -11,6 +11,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
+    byebug
     @conversation = Conversation.create(conversation_params)
     if @conversation.valid?
       redirect_to conversation_path(@conversation)
@@ -23,7 +24,7 @@ class ConversationsController < ApplicationController
 
 private
   def conversation_params
-    params.require(:conversation).permit(:receiver_id, :initiator_id, messages_attributes:[:content])
+    params.require(:conversation).permit(:receiver_id, :initiator_id, messages_attributes: [:content, :user_id])
   end
 
 end

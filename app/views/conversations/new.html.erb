@@ -1,11 +1,16 @@
 <h3>New Conversation</h3>
 
+<%= render '/errors/errors' %>
+
 <%= form_for @conversation do |f| %>
-  <%= f.hidden_field :initiator_id, value: @user.id %>
-  <%= f.collection_select :receiver_id, @users, :id, :username %><br><br>
+  <%= f.hidden_field :user_ids, value: @user.id %>
+  <%= f.collection_select :user_ids, @users, :id, :username %><br><br>
   <%= f.label :message %>
   <%= f.fields_for :messages, @conversation.messages.build do |message| %><br>
     <%= message.text_area :content %><br><br>
-    <% end %>
+    <%= message.hidden_field :user_ids, value: @user.id %>
+  <% end %>
   <%= f.submit "Send" %>
 <% end %>
+
+<p><%= link_to "Back to Homepage", welcome_path %></p>
