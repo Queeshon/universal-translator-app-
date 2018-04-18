@@ -6,21 +6,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    #byebug
-    # if params[:username].scan(/\D/).empty?
-    #   @user = User.find(params[:username])
-    # else
-    #   @user = User.find_by(username: params[:username])
-    # end
   end
 
   def new
     @user = User.new
+    @languages = Language.all
   end
 
   def create
-    #byebug
     @user = User.create(user_params)
+    #byebug
     if @user.valid?
       redirect_to @user
     else
@@ -55,6 +50,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :name,
       :username,
+      :language_id,
       :password,
       :password_confirmation,
       conversation_ids: []
