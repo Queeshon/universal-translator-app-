@@ -1,17 +1,17 @@
 <h1>Welcome to Trek, <%= session[:username] %>.</h1>
 
-<p><%= link_to 'Start New Conversation', new_conversation_path %></p>
+<p><%= link_to 'Start New Chatroom', new_chatroom_path %></p>
 
-<% if @user.conversations && @user.conversations.length > 0 %>
+<% if @user.chatrooms && @user.chatrooms.length > 0 %>
   <ul>
-    <% @user.conversations.each do |convo| %>
-      <% convo.users.each do |key, user| %>
+    <% @user.chatrooms.each do |chat| %>
+      <% chat.users.each do |key, user| %>
         <% if user.username != @user.username %>
-          <li><%= link_to user.username, convo %></li>
+          <li><%= link_to user.username, chat %></li>
         <% end %>
       <% end %>
     <% end %>
   </ul>
 <% else %>
-    <h3>No new conversations.</h3>
+    <h3>No new chatrooms.</h3>
 <% end %>

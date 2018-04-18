@@ -7,10 +7,10 @@ class User < ApplicationRecord
   validates :password, length: { in: 6..20 }
   has_secure_password
 
-  def conversations
-    if Conversation.all.length > 0
-      Conversation.all.select{|convo|
-        convo.messages.last.recipient == self || convo.messages.last.sender == self
+  def chatrooms
+    if Chatroom.all.length > 0
+      Chatroom.all.select{|chat|
+        chat.messages.last.recipient == self || chat.messages.last.sender == self
       }
     else
       []

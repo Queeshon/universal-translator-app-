@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180417195624) do
 
-  create_table "conversations", force: :cascade do |t|
+  create_table "chatrooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20180417195624) do
   create_table "messages", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "recipient_id"
-    t.integer "conversation_id"
+    t.integer "chatroom_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
   end
 
   create_table "users", force: :cascade do |t|

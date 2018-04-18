@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       :language_id,
       :password,
       :password_confirmation,
-      conversation_ids: []
+      chatrooms_ids: []
     )
   end
 
