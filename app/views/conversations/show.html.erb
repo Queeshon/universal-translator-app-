@@ -1,8 +1,8 @@
 <h1>Conversation</h1>
 
-<% @conversation.messages.each do |message| %>
-  <%= message.sender.username %> to <%= message.recipient.username %> at <%= message.created_at.strftime("%I:%M %p") %><br>
-  <%= message.content %><br><br><br>
+<% @translated_messages.each do |message| %>
+  <%= @user.username %> to <%= @recipient.username %><br>
+  <%= message %><br><br><br>
 <% end %>
 
 <%= form_for @conversation do |f| %>
@@ -16,3 +16,5 @@
 <% end %>
 
 <p><%= link_to 'Your Conversations', welcome_path %></p>
+
+<script language="javascript" type="text/javascript">setTimeout("location.reload();",20000);</script>
