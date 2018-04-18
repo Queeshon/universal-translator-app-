@@ -6,14 +6,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
   </head>
 
-  <body>
-    <% if logged_in? %>
-      <%= link_to "Logout", logout_path, method: "POST" %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-    <% end %>
-    <%= yield %>
-  </body>
+  <body class="fixed skin-blue">
+
+  <div class="wrapper">
+      <%= render 'layouts/navigation/layout'%>
+  <div class="content-wrapper">
+          <%= yield %>
+      </div>
+      <%= render 'layouts/navigation/footer' %>
+  </div>
+  
+  <% if logged_in? %>
+  <%= link_to "Logout", logout_path, method: "POST" %>
+  <% else %>
+  <%= link_to "Login", login_path %>
+  <% end %>
+    </body>
 </html>
