@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   #this controller is for the creation of new users.
   before_action :get_user, only: [:show, :edit, :update, :destroy]
+  before_action :get_languages, only: [:new, :edit]
 
   def index
   end
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @languages = Language.all
   end
 
   def create
@@ -59,6 +59,10 @@ class UsersController < ApplicationController
 
   def get_user
     @user = User.find(params[:id])
+  end
+
+  def get_languages
+    @languages = Language.all
   end
 
 end

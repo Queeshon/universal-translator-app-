@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   resources :conversations
+  # get '/delete_conversation', to: 'conversations#destroy', as: 'delete'
 
 
 end
