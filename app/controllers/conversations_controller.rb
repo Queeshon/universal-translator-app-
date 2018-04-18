@@ -23,7 +23,7 @@ class ConversationsController < ApplicationController
     # @conversation.save
     # @user.sent_messages >> @conversation.messages.last
     if @conversation.valid?
-      redirect_to conversation_path(@conversation)
+    redirect_to conversation_path(@conversation)
     else
       flash[:errors] = @conversation.errors.full_messages
       redirect_to new_conversation_path

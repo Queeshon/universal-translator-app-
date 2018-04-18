@@ -9,7 +9,8 @@ class User < ApplicationRecord
   def conversations
     if Conversation.all.length > 0
       Conversation.all.select{|convo|
-        convo.messages.last.recipient == self || convo.messages.last.sender == self
+        convo.messages && convo.messages.length > 0 && convo.messages.last.recipient == self || convo.messages && convo.messages.length > 0 && convo.messages.last.sender == self
+
       }
     else
       []
