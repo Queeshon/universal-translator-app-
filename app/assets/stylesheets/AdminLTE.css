@@ -10,6 +10,10 @@
  * -------------------------
  */
 html,
+
+body {
+    background: url(https://cdn.pixabay.com/photo/2017/05/04/17/17/night-sky-2284594_1280.jpg);
+}
 body {
   height: 100%;
 }
