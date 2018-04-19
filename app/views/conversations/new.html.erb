@@ -17,4 +17,80 @@
   </div>
 </div>
 
+<div>
+		<h2>Record a message</h2>
+		<p>
+			<button id=startRecord>Record</button>
+			<button id=stopRecord disabled>Send Message</button>
+		</p>
+		<p>
+			<audio id=recordedAudio></audio>
+			<!-- <a id=audioDownload></a> -->
+		</p>
+</div>
+<script type="text/javascript">
+navigator.mediaDevices.getUserMedia({audio:true})
+  .then(stream => {
+    rec = new MediaRecorder(stream);
+    rec.ondataavailable = e => {
+      audioChunks.push(e.data);
+      if (rec.state == "inactive"){
+        let blob = new Blob(audioChunks,{type:'audio/mpeg-3'});
+
+        console.log(blob)
+        sendData(blob)
+
+        function sendData(data) {
+          var XHR = new XMLHttpRequest();
+          var FD  = new FormData();
+
+          // Push our data into our FormData object
+          for(name in data) {
+            FD.append(name, blob, data[name]);
+          }
+
+          // Define what happens on successful data submission
+          // XHR.addEventListener('load', function(event) {
+          //   alert('Yeah! Data sent and response loaded.');
+          // });
+
+          // Define what happens in case of error
+          XHR.addEventListener('error', function(event) {
+            alert('Oops! Something went wrong.');
+          });
+
+          // Set up our request
+          XHR.open('POST', 'http://localhost:3000/conversations/create1', true);
+
+          XHR.onload = function (oEvent) {
+  // Uploaded.
+};
+
+
+          // Send our FormData object; HTTP headers are set automatically
+          XHR.send(FD);
+        }
+
+
+        recordedAudio.src = URL.createObjectURL(blob);
+        recordedAudio.controls=true;
+        recordedAudio.autoplay=true;
+        var myfile = recordedAudio.src;
+     }
+    }
+  })
+  .catch(e=>console.log(e));
+
+startRecord.onclick = e => {
+  startRecord.disabled = true;
+  stopRecord.disabled=false;
+  audioChunks = [];
+  rec.start();
+}
+stopRecord.onclick = e => {
+  startRecord.disabled = false;
+  stopRecord.disabled=true;
+  rec.stop();
+}
+</script>
 </div>
