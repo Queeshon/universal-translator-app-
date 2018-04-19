@@ -6,12 +6,18 @@
       </div>
       <div class="pull-left info">
         <p>
-          User Name
+          <%= session[:username] %>
         </p>
         <a href="#">
-          <i class="fa fa-circle text-success">
-          </i>Online
-          </a>
+          <% if logged_in? %>
+            <i class="fa fa-circle text-green">
+            </i>Online
+            </a>
+          <% else %>
+            <i class="fa fa-circle text-red">
+            </i>Offline
+            </a>
+          <% end %>
       </div>
     </div>
     <form action="#" class="sidebar-form" method="get">
@@ -25,31 +31,17 @@
     </form>
     <ul class="sidebar-menu">
       <li class="header">
-        HEADER
+        Services
       </li>
       <li class="active">
-        <a href="#">
-      <span>Link</span>
+        <a href="/conversations/new">
+      <span>Start New Link</span>
       </a>
       </li>
       <li>
-        <a href="#">
-        <span>Another Link</span>
+        <a href="/your_conversations">
+        <span>Current Links</span>
         </a>
-      </li>
-      <li class="treeview">
-        <a href="#">
-          <span>Multilevel</span>
-          <i class="fa fa-angle-left pull-right">
-          </i></a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#"> Link in level 2</a>
-          </li>
-          <li>
-            <a href="#"> Link in level 2</a>
-          </li>
-        </ul>
       </li>
     </ul>
   </div>

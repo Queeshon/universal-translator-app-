@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :get_user, only: [:show, :your_chatrooms]
+  before_action :get_user, only: [:show, :your_conversations]
+  before_action :authorized, only: [:your_conversations, :show]
 
   def new
   end
@@ -21,6 +22,9 @@ class SessionsController < ApplicationController
   end
 
   def your_conversations
+  end
+
+  def set_status
   end
 
   def destroy

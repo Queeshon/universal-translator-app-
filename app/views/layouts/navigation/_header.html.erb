@@ -1,6 +1,7 @@
 <header class="main-header">
   <a class="logo" href="/welcome">
-Trek Messenger
+    <i class="fa fa-paper-plane">
+    </i> TREK
 </a>
   <nav class="navbar navbar-static-top" role="navigation">
     <div class="navbar-custom-menu">
@@ -64,69 +65,19 @@ Trek Messenger
           </ul>
         </li>
         <li class="dropdown tasks-menu">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-flag-o">
-            </i><span class="label label-danger">9</span>
-            </a>
-          <ul class="dropdown-menu">
-            <li class="header">
-              You have 9 tasks
-            </li>
-            <li>
-              <ul class="menu">
-                <li>
-                  <a href="#">
-                  </a>
-                  <h3>
-                    Design some buttons
-                  <small class="pull-right">20%</small>
-                  </h3>
-                  <div class="progress xs">
-                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-aqua" role="progressbar" style="width: 20%">
-<span class="sr-only">20% Complete</span>
-</div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="footer">
-              <a href="#"> View all tasks</a>
-            </li>
-          </ul>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/logout">
+            <% if logged_in? %>
+              <i class="fa fa-power-off text-red"></i> Logout
+            <% else %>
+              <i class="fa fa-power-off text-white"></i> Login
+            <% end %>
+          </a>
         </li>
         <li class="dropdown user user-menu">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
           <span class="hidden-xs"><%= session[:username] %></span>
           </a>
-          <ul class="dropdown-menu">
-            <li class="user-header">
-              <img class="img-circle" alt="User Image" src="http://placehold.it/160x160"> </img>
-              <p>
-                <%= session[:username] %>
-                <small></small>
-              </p>
-            </li>
-            <li class="user-body">
-              <div class="col-xs-4 text-center">
-                <a href=""></a>
-              </div>
-              <div class="col-xs-4 text-center">
-                <a href="#"> Sales</a>
-              </div>
-              <div class="col-xs-4 text-center">
-                <a href="#"> Friends</a>
-              </div>
-            </li>
-            <li class="user-footer">
-              <div class="pull-left">
-                <a class="btn btn-default btn-flat" href="#"> Profile</a>
-              </div>
-              <div class="pull-right">
-                <a class="btn btn-default btn-flat" href="#"> Sign out</a>
-              </div>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>

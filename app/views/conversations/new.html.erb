@@ -1,15 +1,20 @@
-<h3>New Conversation</h3>
+<div class="a">
 
-<%= render '/errors/errors' %>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <h3>New Link</h3>
+    <%= form_for @conversation do |f| %>
+      <div class="form_group">
+        <%= f.label :message %>
+        <%= f.fields_for :messages, @conversation.messages.build do |message| %><br>
+          <%= message.collection_select :recipient_id, @users, :id, :username %><br><br>
+          <%= message.text_area :content %><br><br>
+          <%= message.hidden_field :sender_id, value: @user.id %>
+        <% end %>
+      </div>
+    <input type="submit" class="btn btn-info" value="Create New Link">
+    <% end %>
+  </div>
+</div>
 
-<%= form_for @conversation do |f| %>
-  <%= f.label :message %>
-  <%= f.fields_for :messages, @conversation.messages.build do |message| %><br>
-    <%= message.collection_select :recipient_id, @users, :id, :username %><br>
-    <%= message.text_area :content %><br><br>
-    <%= message.hidden_field :sender_id, value: @user.id %>
-  <% end %>
-  <%= f.submit "Send" %>
-<% end %>
-
-<p><%= link_to "Back to Homepage", welcome_path %></p>
+</div>

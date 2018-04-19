@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   #this controller is for the creation of new users.
   before_action :get_user, only: [:show, :edit, :update, :destroy]
   before_action :get_languages, only: [:new, :edit]
+  before_action :authorized, only: [:edit, :update, :destroy, :show]
 
   def index
   end

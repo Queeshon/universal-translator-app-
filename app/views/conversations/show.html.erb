@@ -1,10 +1,10 @@
+<div class="a">
 <h1><%= @recipient.username %></h1>
-<% @conversation.messages.each do |message| %>
-  <% @translated_messages.each do |translation| %>
+
+  <% @conversation.messages.each_with_index do |message, i| %>
     <%= message.sender.username %><br>
-    <%= translation %><br><br><br>
+    <%= @translated_messages[i] %><br><br>
   <% end %>
-<% end %>
 
 <%= form_for @conversation do |f| %>
   <%= f.label :message %>
@@ -13,9 +13,9 @@
     <%= message.text_area :content %><br>
     <%= message.hidden_field :sender_id, value: @user.id %>
   <% end %>
-  <%= f.submit "Send" %>
+  <input type="submit" class="btn btn-info" value="Send">
 <% end %>
 
-<p><%= link_to 'Your Conversations', welcome_path %></p>
+<button><%= link_to 'Delete Conversation', @conversation, method: :delete %></button>
 
-<p><%= link_to 'Delete Conversation', @conversation, method: :delete %></p>
+</div>

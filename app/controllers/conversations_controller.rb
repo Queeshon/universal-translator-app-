@@ -3,6 +3,7 @@ require 'google/cloud/translate'
 
 class ConversationsController < ApplicationController
   before_action :get_conversation, only: [:show, :update, :destroy]
+  before_action :authorized
 
   def new
     @conversation = Conversation.new

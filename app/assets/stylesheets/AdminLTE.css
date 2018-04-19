@@ -129,7 +129,6 @@ body {
   max-width: 100%;
 }
 .fixed .wrapper {
-  overflow: hidden;
 }
 .hold-transition .content-wrapper,
 .hold-transition .right-side,
