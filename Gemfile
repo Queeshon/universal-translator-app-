@@ -4,8 +4,19 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'execjs'
+gem 'pg'
+gem 'barista'
+gem 'json'
+gem 'therubyracer', :require => nil
+gem 'jquery-rails'
+
+gem 'carrierwave', '~> 1.0'
+gem 'audio'
+gem 'easy_audio'
 gem 'easy_translate'
 gem 'google-cloud-translate'
+gem 'google-cloud-speech'
 gem 'cloud'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -40,6 +51,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'haml-rails', '>= 0.3.4'
 end
 
 group :development do
