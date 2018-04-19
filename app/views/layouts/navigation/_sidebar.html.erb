@@ -6,7 +6,7 @@
       </div>
       <div class="pull-left info">
         <p>
-          User Name
+          <%= session[:username] %>
         </p>
         <a href="#">
           <i class="fa fa-circle text-success">
@@ -28,28 +28,19 @@
         HEADER
       </li>
       <li class="active">
-        <a href="#">
-      <span>Link</span>
+        <a href="/chatrooms/new">
+      <span>Start New Chatroom</span>
       </a>
       </li>
       <li>
-        <a href="#">
-        <span>Another Link</span>
+        <a href="/your_chatrooms">
+        <span>Chatrooms</span>
         </a>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <span>Multilevel</span>
-          <i class="fa fa-angle-left pull-right">
-          </i></a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#"> Link in level 2</a>
-          </li>
-          <li>
-            <a href="#"> Link in level 2</a>
-          </li>
-        </ul>
+      <li>
+        <a href="/your_chatrooms">
+        <span>Friends</span>
+        </a>
       </li>
     </ul>
   </div>

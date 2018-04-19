@@ -4,11 +4,10 @@ class MessagesController < ApplicationController
     @chatroom = Chatroom.find(message_params[:chatroom_id])
     message = Message.new(message_params)
     #byebug
-    message.sender = current_user
     if message.save
-      ActionCable.server.broadcast 'messages',
-        message: message.content,
-        user: message.sender.username
+      ActionCable.server.broadcast 'room-#{message.chatroom_id}:messages',
+        message: message,
+        user: message.sender
       head :ok
     end
   end

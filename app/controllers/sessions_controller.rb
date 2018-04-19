@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :get_user, only: [:show, :your_chatrooms]
 
   def new
   end
@@ -16,8 +17,10 @@ class SessionsController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: session[:username])
     #byebug
+  end
+
+  def your_chatrooms
   end
 
   def destroy
@@ -26,5 +29,9 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def get_user
+    @user = User.find_by(username: session[:username])
+  end
 
 end
