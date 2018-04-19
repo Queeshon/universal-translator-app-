@@ -12,6 +12,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    #byebug
     @user = current_user
 
     project_id = "nomadic-thinker-201317"

@@ -2,8 +2,11 @@
 <h1><%= @recipient.username %></h1>
 
   <% @conversation.messages.each_with_index do |message, i| %>
-    <%= message.sender.username %><br>
-    <%= @translated_messages[i] %><br><br>
+    <% if message.sender.id == @user.id %>
+      <div class="speech-bubble-me"><%= @translated_messages[i] %></div><br>
+    <% else %>
+      <div class="speech-bubble-him"><%= @translated_messages[i] %></div><br>
+    <% end %>
   <% end %>
 
 <%= form_for @conversation do |f| %>
