@@ -7,67 +7,21 @@
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li class="dropdown messages-menu">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/conversations/new">
             <i class="fa fa-handshake-o text-lime"></i> New Link
             <span class="label label-success"></span>
           </a>
-          <ul class="dropdown-menu">
-            <li class="header">
-              You have 4 messages
-            </li>
-            <li>
-              <ul class="menu">
-                <li>
-                  <a href="#"> </a>
-                  <div class="pull-left">
-                    <img class="img-circle" alt="User Image" src="http://placehold.it/160x160"> </img>
-                  </div>
-                  <h4>
-                    Sender Name
-                    <small>
-                    <i class="fa fa-clock-o">
-                    </i>5 mins
-                    </small>
-                  </h4>
-                  <p>
-                    Message Excerpt
-                  </p>
-                </li>
-              </ul>
-            </li>
-            <li class="footer">
-              <a href="#"> See All Messages</a>
-            </li>
-          </ul>
         </li>
         <li class="dropdown notifications-menu">
-<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-hand-spock-o text-orange"></i> Links
+<a class="dropdown-toggle" data-toggle="dropdown" href="/your_conversations">
+            <i class="fa fa-cubes text-orange"></i> Links
             <span class="label label-warning"></span>
           </a>
-          <ul class="dropdown-menu">
-            <li class="header">
-              You have 10 notifications
-            </li>
-            <li>
-              <ul class="menu">
-                <li>
-                  <a href="#">
-                <i class="ion ion-ios-people info">
-                </i>Notification title
-                </a>
-                </li>
-              </ul>
-            </li>
-            <li class="footer">
-              <a href="#"> View all</a>
-            </li>
-          </ul>
         </li>
         <li class="dropdown tasks-menu">
           <a class="dropdown-toggle" data-toggle="dropdown" href="/logout">
             <% if logged_in? %>
-              <i class="fa fa-power-off text-red"></i> Logout
+              <i class="fa fa-hand-spock-o text-red"></i> Logout
             <% else %>
               <i class="fa fa-power-off text-lime"></i> Login
             <% end %>
@@ -76,12 +30,11 @@
         <li class="dropdown user user-menu">
           <% if @user %>
             <a class="dropdown-toggle" data-toggle="dropdown" href="/users/<%= @user.id %>">
-              <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
+              <img alt="User Image" class="user-image" src="<%= @random_image %>" />
             <span class="hidden-xs"><%= session[:username] %></span>
             </a>
           <% else %>
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
             <span class="hidden-xs"><%= session[:username] %></span>
             </a>
           <% end %>
