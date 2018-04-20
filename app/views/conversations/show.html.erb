@@ -1,6 +1,8 @@
 <div class="a">
 <h1><%= @recipient.username %></h1>
 
+<div class="panel panel-default">
+<div class="panel-body">
   <% @conversation.messages.each_with_index do |message, i| %>
     <% if message.sender.id == @user.id %>
       <div class="speech-bubble-me"><%= @translated_messages[i] %></div><br>
@@ -8,6 +10,8 @@
       <div class="speech-bubble-him"><%= @translated_messages[i] %></div><br>
     <% end %>
   <% end %>
+</div>
+</div>
 
 <%= form_for @conversation do |f| %>
   <%= f.label :message %>

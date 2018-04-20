@@ -8,8 +8,8 @@
       <ul class="nav navbar-nav">
         <li class="dropdown messages-menu">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-envelope-o">
-            </i><span class="label label-success">4</span>
+            <i class="fa fa-handshake-o text-lime"></i> New Link
+            <span class="label label-success"></span>
           </a>
           <ul class="dropdown-menu">
             <li class="header">
@@ -42,8 +42,8 @@
         </li>
         <li class="dropdown notifications-menu">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell-o">
-            </i><span class="label label-warning">10</span>
+            <i class="fa fa-hand-spock-o text-orange"></i> Links
+            <span class="label label-warning"></span>
           </a>
           <ul class="dropdown-menu">
             <li class="header">
@@ -69,15 +69,22 @@
             <% if logged_in? %>
               <i class="fa fa-power-off text-red"></i> Logout
             <% else %>
-              <i class="fa fa-power-off text-white"></i> Login
+              <i class="fa fa-power-off text-lime"></i> Login
             <% end %>
           </a>
         </li>
         <li class="dropdown user user-menu">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
-          <span class="hidden-xs"><%= session[:username] %></span>
-          </a>
+          <% if @user %>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="/users/<%= @user.id %>">
+              <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
+            <span class="hidden-xs"><%= session[:username] %></span>
+            </a>
+          <% else %>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
+            <span class="hidden-xs"><%= session[:username] %></span>
+            </a>
+          <% end %>
         </li>
       </ul>
     </div>

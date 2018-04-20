@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
   end
 
   def show
-    #byebug
   end
 
   def your_conversations

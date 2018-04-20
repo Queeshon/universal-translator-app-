@@ -3,7 +3,7 @@
   Username: <%= f.text_field :username %><br>
   Language: <%= f.collection_select :language_id, @languages, :id, :name %><br>
   Password: <%= f.password_field :password %><br>
-  Password Confirmation <%= f.password_field :password_confirmation %><br>
+  Password Confirmation: <%= f.password_field :password_confirmation %><br>
 
   <%= f.submit %>
 <% end %>

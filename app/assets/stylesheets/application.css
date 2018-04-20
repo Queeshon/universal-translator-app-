@@ -24,13 +24,13 @@
     border-radius: .8em;
     max-width: 10%;
     position: relative;
-    left: 70%;
+    left: 65%;
 }
 
 .speech-bubble-him {
-    background: #ffffff;
+    background: LightGray;
     border-radius: .8em;
     max-width: 10%;
     position: relative;
-    left: 20%;
+    left: 25%;
 }

@@ -1,3 +1,4 @@
+<div class="a">  
 <h1><%= session[:username] %>'s Links</h1>
 <div class="list-group">
   <% if @user.conversations && @user.conversations.length > 0 %>
@@ -13,4 +14,5 @@
   <% else %>
       <h3>No new links.</h3>
   <% end %>
+</div>
 </div>

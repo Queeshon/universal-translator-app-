@@ -1,13 +1,15 @@
-<h1>Trek</h1>
+<div class="a">
+  <h1>Trek</h1>
 
-<% if flash[:errors] %>
-  <%= flash[:errors] %>
-<% end %>
+  <% if flash[:errors] %>
+    <%= flash[:errors] %>
+  <% end %>
 
-<%= form_tag sessions_path do %>
-  Username: <%= text_field_tag 'username' %><br>
-  Password: <%= password_field_tag 'password' %><br><br>
-  <%= submit_tag 'Login' %>
-<% end %>
+  <%= form_tag sessions_path do %>
+    Username: <%= text_field_tag 'username' %><br>
+    Password: <%= password_field_tag 'password' %><br><br>
+    <%= submit_tag 'Login' %>
+  <% end %>
 
-<button><%= link_to 'Create New Account', new_user_path %></button>
+  <button><%= link_to 'Create New Account', new_user_path %></button>
+</div>
