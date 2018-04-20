@@ -1,6 +1,6 @@
 <div class="a">
 <h1><%= @recipient.username %></h1>
-
+<% url = '/conversations/recorded/#{@sender_id}/#{@recipient_id}' %>
   <% @conversation.messages.each_with_index do |message, i| %>
     <% if message.sender.id == @user.id %>
       <div class="speech-bubble-me"><%= @translated_messages[i] %></div><br>
@@ -43,20 +43,20 @@
             for(name in data) {
               FD.append(name, blob, data[name]);
             }
-            FD2 = new FormData();
-            FD2.append(sender_id, recipient_id, conversation_id)
+
             // Define what happens on successful data submission
             // XHR.addEventListener('load', function(event) {
             //   alert('Yeah! Data sent and response loaded.');
             // });
-
+            XHR.addEventListener('load', function(event) {
+                setTimeout(location.reload(),1000); });
             // Define what happens in case of error
             XHR.addEventListener('error', function(event) {
               alert('Oops! Something went wrong.');
             });
 
             // Set up our request
-            XHR.open('POST', 'http://localhost:3000/conversations/recorded', true);
+            XHR.open('POST', 'http://localhost:3000/conversations/recorded/' + sender_id + "/" + recipient_id + "/" + conversation_id, true)
 
             XHR.onload = function (oEvent) {
     // Uploaded.
@@ -64,8 +64,8 @@
 
 
             // Send our FormData object; HTTP headers are set automatically
-            XHR.send(FD);
-            XHR.send(FD2)
+            XHR.send(FD)
+
           }
 
 

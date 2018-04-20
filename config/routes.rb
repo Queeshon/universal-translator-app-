@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'users#greeting'
 
   resources :users, :conversations
-  post '/conversations/recorded', to: 'conversations#recorded'
+  post '/conversations/recorded/:sender_id/:recipient_id/:conversation_id', to: 'conversations#recorded'
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create', as: 'sessions'
   get '/welcome', to: 'sessions#show'
