@@ -31,11 +31,19 @@
       <span>Start New Link</span>
       </a>
       </li>
-      <li>
-        <a href="/your_conversations">
-        <span>Current Links</span>
-        </a>
-      </li>
+      <% if logged_in? %>
+        <% @user = User.find_by(username: session[:username]) %>
+        <% @user.conversations.each do |convo| %>
+          <% not_user = convo.users.select do |key, user| %>
+              <% user != @user %>
+          <% end %>
+            <li>
+              <a href="/conversations/<%= convo.id %>">
+                <span><%= not_user.values[0].username %></span>
+              </a>
+            </li>
+        <% end %>
+      <% end %>
     </ul>
   </div>
 </div>

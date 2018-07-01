@@ -2,6 +2,8 @@
   "name": "TREK",
   "private": true,
   "dependencies": {
-    "jquery-ujs": "^1.2.2"
+    "jquery-ujs": "^1.2.2",
+    "express-fileupload": "^0.4.0",
+    "linear16": "^1.0.1"
   }
 }

@@ -21,16 +21,26 @@
 .speech-bubble-me {
     background: #176dbb;
     color: #ffffff;
-    border-radius: .8em;
-    max-width: 10%;
+    border-radius: 1em;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+    padding-left: 1%;
+    padding-right: 0.5%;
+    max-width: 12%;
+    text-align: left;
     position: relative;
-    left: 65%;
+    left: 62.5%;
 }
 
 .speech-bubble-him {
     background: LightGray;
-    border-radius: .8em;
-    max-width: 10%;
+    border-radius: 1em;
+    padding-top: 0.25%;
+    padding-bottom: 0.25%;
+    padding-left: 1%;
+    padding-right: 0.5%;
+    max-width: 12%;
+    text-align: left;
     position: relative;
-    left: 25%;
+    left: 27.5%;
 }
