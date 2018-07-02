@@ -1,8 +1,8 @@
 <div class="a">
 <h1><%= @recipient.username %></h1>
-
 <div class="panel panel-default">
 <div class="panel-body">
+<% url = '/conversations/recorded/#{@sender_id}/#{@recipient_id}' %>
   <% @conversation.messages.each_with_index do |message, i| %>
     <% if message.sender.id == @user.id %>
       <div class="speech-bubble-me"><%= @translated_messages[i] %></div><br>
@@ -13,6 +13,89 @@
 </div>
 </div>
 
+  <div>
+  		<p>
+  			<button id=startRecord>Record</button>
+  			<button id=stopRecord disabled>Send Message</button>
+  		</p>
+  		<p>
+  			<audio id=recordedAudio></audio>
+  			<!-- <a id=audioDownload></a> -->
+  		</p>
+  </div>
+
+  <script type="text/javascript">
+  navigator.mediaDevices.getUserMedia({audio:true})
+    .then(stream => {
+      rec = new MediaRecorder(stream);
+      rec.ondataavailable = e => {
+        audioChunks.push(e.data);
+        if (rec.state == "inactive"){
+          let blob = new Blob(audioChunks,{type:'audio/mpeg-3'});
+
+          console.log(blob)
+          sendData(blob)
+
+          function sendData(data) {
+            var XHR = new XMLHttpRequest();
+            var FD  = new FormData();
+            var sender_id = <%= @user.id %>
+            var recipient_id = <%= @recipient.id %>
+            var conversation_id = <%= @conversation.id %>
+
+            // Push our data into our FormData object
+            for(name in data) {
+              FD.append(name, blob, data[name]);
+            }
+
+            // Define what happens on successful data submission
+            // XHR.addEventListener('load', function(event) {
+            //   alert('Yeah! Data sent and response loaded.');
+            // });
+            XHR.addEventListener('load', function(event) {
+                setTimeout(location.reload(),1000); });
+            // Define what happens in case of error
+            XHR.addEventListener('error', function(event) {
+              alert('Oops! Something went wrong.');
+            });
+
+            // Set up our request
+            XHR.open('POST', 'http://localhost:3000/conversations/recorded/' + sender_id + "/" + recipient_id + "/" + conversation_id, true)
+
+            XHR.onload = function (oEvent) {
+    // Uploaded.
+  };
+
+
+            // Send our FormData object; HTTP headers are set automatically
+            XHR.send(FD)
+
+          }
+
+
+          recordedAudio.src = URL.createObjectURL(blob);
+          recordedAudio.controls=true;
+          recordedAudio.autoplay=true;
+          var myfile = recordedAudio.src;
+       }
+      }
+    })
+    .catch(e=>console.log(e));
+
+  startRecord.onclick = e => {
+    startRecord.disabled = true;
+    stopRecord.disabled=false;
+    audioChunks = [];
+    rec.start();
+  }
+  stopRecord.onclick = e => {
+    startRecord.disabled = false;
+    stopRecord.disabled=true;
+    rec.stop();
+  }
+  </script>
+
+
 <%= form_for @conversation do |f| %>
   <%= f.label :message %>
   <%= f.fields_for :messages, @conversation.messages.build do |message| %>
@@ -22,6 +105,20 @@
   <% end %>
   <input type="submit" class="btn btn-info" value="Send">
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <button><%= link_to 'Delete Conversation', @conversation, method: :delete %></button>
 
