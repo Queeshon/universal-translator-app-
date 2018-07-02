@@ -13,7 +13,7 @@ In development, we used Ruby on Rails to handle users and their messages and con
 
 ## Video Demo
 
-Click [here](add youtube link) for a video demonstration of the project.
+Click [here](https://www.youtube.com/watch?v=IOPL3Fmt_Ms&feature=youtu.be) for a video demonstration of the project.
 
 ### Contributors Guide
 
